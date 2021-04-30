@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Staff from './Staff'
+
 
 class Staff extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      Staff: [],
+      staff: [],
     }
   }
 
@@ -14,31 +14,25 @@ class Staff extends Component {
 
     fetch('https://events-84973.firebaseapp.com/staff')
       .then((response) => response.json())
-      .then((dataReceived) => this.setState({ coffees: dataReceived }))
+      .then((dataReceived) => this.setState({ staff: dataReceived }))
       .catch()
   }
-
   handleButtonClick(type) {
-    this.setState({ coffees: null })
-    fetch(`https://events-84973.firebaseapp.com/staff${type}`)
+    this.setState({ staff: null })
+    fetch(`https://events-84973.firebaseapp.com/${type}`)
       .then((response) => response.json())
-      .then((dataReceived) => this.setState({ coffees: dataReceived }))
+      .then((dataReceived) => this.setState({ staff: dataReceived }))
       .catch()
   }
 
   render() {
-    const { coffees } = this.state
+    const { staff } = this.state
 
-    if (!coffees) {
+    if (!staff) {
       return <h2>Loading...</h2>
     }
-
-    return (
-      <>
-        {this.state.coffees.map((coffee) => {
-          return <SingleCoffee key={coffee.id} coffee={coffee} />
-        })}
-      </>
+    return(
+        <p>This is the staff</p>
     )
   }
 }

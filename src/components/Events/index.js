@@ -8,7 +8,7 @@ class Events extends Component {
         }
     }
     componentDidMount() {
-        fetch('https://events-84973.web.app/event')
+        fetch('https://events-84973.firebaseapp.com/events')
         .then(response => response.json())
         .then(data => this.setState({events: data}))
         .catch(err => console.log(err))
